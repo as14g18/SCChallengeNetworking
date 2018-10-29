@@ -11,16 +11,19 @@ public class Launcher {
 		System.out.print("--> ");
 		
 		String userInput = reader.nextLine();
+		String chatType = "";
 		
 		if (userInput.equals("1")) {
-			Client client = new Client();
-			client.initiate();
+			chatType = "Client";
 		} else if (userInput.equals("2")) {
-			Server server = new Server();
-			server.initiate();
+			chatType = "Server";
+			
+		} else {
+			System.out.println("Wrong input. Terminating.");
+			return;
 		}
-		
-		reader.close();
-	}
 
+		Runnable r = new GroupChat(chatType);
+		new Thread(r).start();
+	}
 }

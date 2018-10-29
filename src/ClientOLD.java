@@ -5,18 +5,16 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.Socket;
 
-public class Client {
+public class ClientOLD {
 	private Socket connection;
 	private DataInputStream dIn;
 	private DataOutputStream dOut;
 	private BufferedReader br;
 	
-	public Client() throws IOException {
-		this.connection = new Socket("0.0.0.0",32581); // pauses code until a client connects
-		
+	public ClientOLD() throws IOException {
+		this.connection = new Socket("0.0.0.0",32582); // pauses code until a client connects
 		this.dIn = new DataInputStream(connection.getInputStream());
 		this.dOut = new DataOutputStream(connection.getOutputStream());
-		
 		this.br = new BufferedReader(new InputStreamReader(System.in));
 	}
 	
